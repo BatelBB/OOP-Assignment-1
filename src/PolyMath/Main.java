@@ -1,4 +1,4 @@
-package OOP_Polynomial_Calculator;
+package PolyMath;
 
 public class Main {
 

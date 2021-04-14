@@ -1,4 +1,4 @@
-package OOP_Polynomial_Calculator;
+package Calculator;
 import PolyMath.*;
 import PolyMath.Integer;
 
@@ -95,10 +95,10 @@ public class Calculator {
         printEval(p7, q, p7.evaluate(q));
         printEval(p8, q, p8.evaluate(q));
         printEval(p9, q, p9.evaluate(q));
-        
+
         //Derivate Tests
         printTitle("Testing derivative");
-        printDerivate(p1, p1.derivative);
+        printDerivate(p1, p1.derivative());
         printDerivate(p2, p2.derivative());
         printDerivate(p3, p3.derivative());
         printDerivate(p4, p4.derivative());
