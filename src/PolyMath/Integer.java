@@ -2,7 +2,10 @@ package PolyMath;
 
 public class Integer implements Scalar {
 
-    public Integer(int i) {
+    private int number;
+
+    public Integer(int number) {
+        this.number = number;
     }
 
     @Override
@@ -49,4 +52,5 @@ public class Integer implements Scalar {
     public Scalar neg() {
         return null;
     }
+
 }
