@@ -12,24 +12,42 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-       // if(s.toString().contains("/"))
-         //   addRational(new Rational(s.));
         //check if the scalar is an Integer or a Rational
-        return null;
+        String sStringAdd = s.toString();
+        if(sStringAdd.contains("/")) {
+            String sArr[] = s.toString().split("/");
+            int numerS = java.lang.Integer.parseInt(sArr[0]);
+            int denomS = java.lang.Integer.parseInt(sArr[1]);
+            return addRational(new Rational(numerS, denomS));
+        }else {
+            int integerS = java.lang.Integer.parseInt(sStringAdd);
+            return addInteger(new Integer(integerS));
+        }
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        return null;
+        //check if the scalar is an Integer or a Rational
+        String sStringMul = s.toString();
+        if(sStringMul.contains("/")) {
+            String sArr[] = s.toString().split("/");
+            int numerS = java.lang.Integer.parseInt(sArr[0]);
+            int denomS = java.lang.Integer.parseInt(sArr[1]);
+            return mulRational(new Rational(numerS, denomS));
+        }else {
+            int integerS = java.lang.Integer.parseInt(sStringMul);
+            return mulInteger(new Integer(integerS));
+        }
     }
 
     @Override
     public Scalar addRational(Rational s) {
         if (s.denominator == this.denominator) {
-            //if(s.numerator+this.numerator==s.denominator)
-            // return new Rational(1,1);
-            //if(s.numerator+this.numerator>s.denominator)
-            return new Rational(s.numerator + this.numerator, s.denominator);
+            if(s.numerator+this.numerator==s.denominator)// 9/9 = 1
+                return new Integer(1);
+            else if(s.numerator+this.numerator%s.denominator==0) // 18/9 = 2
+                return new Integer((s.numerator+this.numerator)/s.denominator);
+            return new Rational(s.numerator + this.numerator, s.denominator); // 17/9
         }
         //the two denominators are different so we need to find the shared denominator
         int numS = s.numerator * this.denominator;
@@ -43,6 +61,7 @@ public class Rational implements Scalar {
     @Override
     public Scalar addInteger(Integer s) {
         //int numS = s.mulInteger(this.denominator);
+
         return null;
     }
 
