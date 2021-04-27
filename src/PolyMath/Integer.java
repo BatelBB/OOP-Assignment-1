@@ -38,7 +38,8 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar addRational(Rational s) {
-        return null;
+        int numS = (number*s.getDenominator())+s.getNumerator();
+        return new Rational(numS, s.getDenominator());
     }
 
     @Override
