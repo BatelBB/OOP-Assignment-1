@@ -72,9 +72,7 @@ public class Polynomial {
             m2 = next(iter2);
         }
 
-
         return new Polynomial(newPol);
-
     }
 
     private static Monomial next(Iterator<Monomial> iter){
@@ -84,7 +82,16 @@ public class Polynomial {
     }
 
     public Polynomial mul(Polynomial p5) {
+        /*LinkedList<Monomial> newPol = new LinkedList<>();
+
+        Iterator<Monomial> iter1 = polinom.iterator();
+        Iterator<Monomial> iter2 = p5.polinom.iterator();
+
+        Monomial m1 = next(iter1);
+        Monomial m2 = next(iter2);*/
         return null;
+
+
     }
 
     public Scalar evaluate(Scalar r) {

@@ -14,13 +14,15 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        if(s instanceof Integer){
+        /*if(s instanceof Integer){
             int num = java.lang.Integer.valueOf(s.toString());
             return addInteger(new Integer(num));
         }
         else {
             return s.addRational(new Rational(number, 1));
-        }
+        }*/
+
+        return s.addInteger(this);
     }
 
     @Override
