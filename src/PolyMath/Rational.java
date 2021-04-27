@@ -16,12 +16,12 @@ public class Rational implements Scalar {
         return denominator;
     }
     @Override
-    public Scalar add(Scalar s) {
+    public Scalar add(Scalar s) throws Exception {
        return s.addRational(this);
     }
 
     @Override
-    public Scalar mul(Scalar s) {
+    public Scalar mul(Scalar s) throws Exception {
         return s.mulRational(this);
     }
 
@@ -90,12 +90,15 @@ public class Rational implements Scalar {
     }
 
     //returns a new Rational which is the rational in its lowest form
-    public Rational reduce() {
+    public Rational reduce() throws Exception {
+        if(this.denominator == 0)
+            throw new Exception("Cannot / by zero!");
         if(this.numerator%this.denominator==0) {
             if (isPrime(this.denominator))
                 return new Rational(this.numerator / this.denominator, this.denominator);
             return new Rational(this.numerator / this.denominator, this.denominator / this.numerator);
         }
+
         //if (isPrime(this.denominator))
             return this;
         //return new Rational(this.numerator,this.denominator/)

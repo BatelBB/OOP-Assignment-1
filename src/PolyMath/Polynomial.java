@@ -37,7 +37,7 @@ public class Polynomial {
         return new Integer(java.lang.Integer.valueOf(s));
     }
 
-    public Polynomial add(Polynomial p1) {
+    public Polynomial add(Polynomial p1) throws Exception {
         LinkedList<Monomial> newPol = new LinkedList<>();
 
         Iterator<Monomial> iter1 = polinom.iterator();
@@ -94,7 +94,7 @@ public class Polynomial {
 
     }
 
-    public Scalar evaluate(Scalar r) {
+    public Scalar evaluate(Scalar r) throws Exception {
         Scalar eval = new Integer(0);
         for(Monomial mon: polinom){
             eval = eval.add(mon.evaluate(r));

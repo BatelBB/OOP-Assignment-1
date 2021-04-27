@@ -23,7 +23,7 @@ public class Integer implements Scalar {
     }
 
     @Override
-    public Scalar addRational(Rational s) {
+    public Scalar addRational(Rational s) throws Exception {
         return new Rational(s.getNumerator() + this.number * s.getDenominator(), s.getDenominator()).reduce();
     }
 
@@ -33,7 +33,7 @@ public class Integer implements Scalar {
     }
 
     @Override
-    public Scalar mulRational(Rational s) {
+    public Scalar mulRational(Rational s) throws Exception {
         return new Rational(s.getNumerator() * this.number, s.getNumerator()).reduce();
     }
 

@@ -27,10 +27,10 @@ public class Calculator {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        Polynomial p1 = Polynomial.build("1 1");
-        Polynomial p2 = Polynomial.build("1/2 0 -1 0 1/4");
+        Polynomial p1 = Polynomial.build("1/2 1");
+        Polynomial p2 = Polynomial.build("1 0 -1 0 1/4");
         Polynomial p3 = Polynomial.build("5 0 -2");
         Polynomial p4 = Polynomial.build("5");
         Polynomial p5 = Polynomial.build("2/-1");
@@ -71,43 +71,45 @@ public class Calculator {
         printMul(p8, p8, p8.mul(p8));
         printMul(p9, p9, p9.mul(p9));
         printMul(p8, p9, p8.mul(p9));
+try {
+    //Evaluate Tests
+    printTitle("Testing Evaluate");
+    Scalar r = new Integer(0);
+    printEval(p1, r, p1.evaluate(r));
+    printEval(p2, r, p2.evaluate(r));
+    printEval(p3, r, p3.evaluate(r));
+    printEval(p4, r, p4.evaluate(r));
+    r = new Integer(1);
+    printEval(p1, r, p1.evaluate(r));
+    printEval(p2, r, p2.evaluate(r));
+    printEval(p3, r, p3.evaluate(r));
+    printEval(p4, r, p4.evaluate(r));
+    Scalar q = new Rational(0, 0);
+    printEval(p5, q, p5.evaluate(q));
+    printEval(p6, q, p6.evaluate(q));
+    printEval(p7, q, p7.evaluate(q));
+    printEval(p8, q, p8.evaluate(q));
+    printEval(p9, q, p9.evaluate(q));
+    q = new Rational(1, 1);
+    printEval(p5, q, p5.evaluate(q));
+    printEval(p6, q, p6.evaluate(q));
+    printEval(p7, q, p7.evaluate(q));
+    printEval(p8, q, p8.evaluate(q));
+    printEval(p9, q, p9.evaluate(q));
 
-        //Evaluate Tests
-        printTitle("Testing Evaluate");
-        Scalar r = new Integer(0);
-        printEval(p1, r, p1.evaluate(r));
-        printEval(p2, r, p2.evaluate(r));
-        printEval(p3, r, p3.evaluate(r));
-        printEval(p4, r, p4.evaluate(r));
-        r = new Integer(1);
-        printEval(p1, r, p1.evaluate(r));
-        printEval(p2, r, p2.evaluate(r));
-        printEval(p3, r, p3.evaluate(r));
-        printEval(p4, r, p4.evaluate(r));
-        Scalar q = new Rational(0, 0);
-        printEval(p5, q, p5.evaluate(q));
-        printEval(p6, q, p6.evaluate(q));
-        printEval(p7, q, p7.evaluate(q));
-        printEval(p8, q, p8.evaluate(q));
-        printEval(p9, q, p9.evaluate(q));
-        q = new Rational(1, 1);
-        printEval(p5, q, p5.evaluate(q));
-        printEval(p6, q, p6.evaluate(q));
-        printEval(p7, q, p7.evaluate(q));
-        printEval(p8, q, p8.evaluate(q));
-        printEval(p9, q, p9.evaluate(q));
+    //Derivate Tests
+    printTitle("Testing derivative");
+    printDerivate(p1, p1.derivative());
+    printDerivate(p2, p2.derivative());
+    printDerivate(p3, p3.derivative());
+    printDerivate(p4, p4.derivative());
+    printDerivate(p5, p5.derivative());
+    printDerivate(p6, p6.derivative());
+    printDerivate(p7, p7.derivative());
+    printDerivate(p8, p8.derivative());
+    printDerivate(p9, p9.derivative());
+}catch (Exception e){
 
-        //Derivate Tests
-        printTitle("Testing derivative");
-        printDerivate(p1, p1.derivative());
-        printDerivate(p2, p2.derivative());
-        printDerivate(p3, p3.derivative());
-        printDerivate(p4, p4.derivative());
-        printDerivate(p5, p5.derivative());
-        printDerivate(p6, p6.derivative());
-        printDerivate(p7, p7.derivative());
-        printDerivate(p8, p8.derivative());
-        printDerivate(p9, p9.derivative());
-
+}
     }
 }
