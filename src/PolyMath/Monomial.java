@@ -18,8 +18,7 @@ public class Monomial {
     public Monomial add(Monomial m){
         if(m.exponent != this.exponent)
             return null;
-        //return new Monomial()
-        return null;
+        return new Monomial(m.exponent, this.coefficient.add(m.coefficient));
     }
 
     /**
@@ -28,8 +27,9 @@ public class Monomial {
      * Monomial with the argument m.
      */
     public Monomial mult(Monomial m){
-        //return new Monomial()
-        return null;
+        if(m.coefficient != this.coefficient)
+            return null;
+        return new Monomial(this.exponent+m.exponent, m.coefficient);
     }
 
     /**
@@ -38,14 +38,16 @@ public class Monomial {
      * scalar 2/3 yields 2 * (2/3)^2 = 8/9.
      */
     public Scalar evaluate(Scalar s){
-        return null;
+        return this.coefficient.mul(s.power(exponent));
     }
 
     /**
      * returns a new Monomial which is the derivaive of the current monomial
      */
     public Monomial derivative(){
-        return null;
+        if(this.exponent == 0)
+            return new Monomial(exponent, new Integer(exponent));
+        return new Monomial(exponent-1,this.coefficient.mul(new Integer(exponent)));
     }
 
     //returns 1 for a positive coefficient and -1 otherwise
@@ -54,8 +56,21 @@ public class Monomial {
             return 1;
         return -1;
     }
-
+    @Override
     public String toString(){
-        return null;
+        if (exponent == 0)
+            return this.coefficient.toString();
+        if(this.coefficient.toString().equals("0"))
+            return "";
+        if(this.coefficient.toString().equals("1") && this.exponent == 1)
+            return "x";
+        if (this.coefficient.toString().equals("1")){
+            if(this.coefficient.sign() == -1)
+                return "-x^" + this.exponent;
+            return "x^" + this.exponent;
+        }
+        else if(this.coefficient.sign() == -1)
+            return "-" + this.coefficient.toString() + "x^" + this.exponent;
+        return this.coefficient.toString() + "x^" + this.exponent;
     }
 }
