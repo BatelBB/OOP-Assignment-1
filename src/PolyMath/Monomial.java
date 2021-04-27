@@ -73,7 +73,7 @@ public class Monomial {
             return "x^" + this.exponent;
         }
         else if(this.coefficient.sign() == -1)
-            return "-" + this.coefficient.neg().toString() + "x^" + this.exponent;
+            return this.coefficient.neg().toString() + "x^" + this.exponent;
         return this.coefficient.toString() + "x^" + this.exponent;
     }
 }
