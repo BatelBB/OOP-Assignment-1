@@ -14,32 +14,17 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        /*if(s instanceof Integer){
-            int num = java.lang.Integer.valueOf(s.toString());
-            return addInteger(new Integer(num));
-        }
-        else {
-            return s.addRational(new Rational(number, 1));
-        }*/
-
         return s.addInteger(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        if(s instanceof Integer){
-            int num = java.lang.Integer.valueOf(s.toString());
-            return mulInteger(new Integer(num));
-        }
-        else {
-            return s.mulRational(new Rational(number, 1));
-        }
+        return s.mulInteger(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
-        int numS = (number*s.getDenominator())+s.getNumerator();
-        return new Rational(numS, s.getDenominator());
+        return new Rational(s.getNumerator() + this.number * s.getDenominator(), s.getDenominator()).reduce();
     }
 
     @Override
@@ -49,7 +34,7 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar mulRational(Rational s) {
-        return s.addRational(new Rational(number, 1));
+        return new Rational(s.getNumerator() * this.number, s.getNumerator()).reduce();
     }
 
     @Override
@@ -79,12 +64,20 @@ public class Integer implements Scalar {
 
     @Override
     public String toString() {
-        if(sign() == 1)
-            return "+ " + number;
-        else if(sign() == -1)
-            return  "- " + number*(-1);
+        String s = "";
+        if(sign() == 0)
+            return s;
+        else if(sign() == 1){
+            s += "+";
+        }
         else
-            return "";
+            s += "-";
+
+        if(this.number == 1 || this.number == -1)
+            return s;
+        else
+            return s + " " + number;
+
 
     }
 
