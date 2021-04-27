@@ -8,14 +8,30 @@ public class Integer implements Scalar {
         this.number = number;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public Scalar add(Scalar s) {
-        return null;
+        if(s instanceof Integer){
+            int num = java.lang.Integer.valueOf(s.toString());
+            return addInteger(new Integer(num));
+        }
+        else {
+            return s.addRational(new Rational(number, 1));
+        }
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        return null;
+        if(s instanceof Integer){
+            int num = java.lang.Integer.valueOf(s.toString());
+            return mulInteger(new Integer(num));
+        }
+        else {
+            return s.mulRational(new Rational(number, 1));
+        }
     }
 
     @Override
@@ -25,32 +41,48 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar addInteger(Integer s) {
-        return null;
+        return new Integer(number + s.number);
     }
 
     @Override
     public Scalar mulRational(Rational s) {
-        return null;
+        return s.addRational(new Rational(number, 1));
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
-        return null;
+        return new Integer(number * s.number);
     }
 
     @Override
     public Scalar power(int exponent) {
-        return null;
+        return new Integer((int)Math.pow((double)number, (double)exponent));
     }
 
     @Override
     public int sign() {
-        return 0;
+        if(number == 0)
+            return 0;
+        else if(number > 0)
+            return 1;
+        else
+            return -1;
     }
 
     @Override
     public Scalar neg() {
-        return null;
+        return new Integer(-1 * number);
+    }
+
+    @Override
+    public String toString() {
+        if(sign() == 1)
+            return "+ " + number;
+        else if(sign() == -1)
+            return  "- " + number*(-1);
+        else
+            return "";
+
     }
 
 }
