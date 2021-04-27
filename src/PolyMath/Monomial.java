@@ -65,8 +65,8 @@ public class Monomial {
             return this.coefficient.toString();
         if(this.coefficient.toString().equals(""))
             return "";
-        if(this.coefficient.toString().equals("1") && this.exponent == 1)
-            return "x";
+        if(this.exponent == 1)
+            return this.coefficient.toString()+"x";
 //        if (this.coefficient.toString().equals("1")){
 //            if(this.coefficient.sign() == -1)
 //                return "-x^" + this.exponent;
