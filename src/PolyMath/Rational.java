@@ -106,8 +106,10 @@ public class Rational implements Scalar {
 
     @Override
     public String toString() {
+        if(this.numerator == 0)
+            return new Integer(0).toString();
         if(this.numerator%this.denominator==0){
-            return String.valueOf(this.numerator / this.denominator);
+            return new Integer(this.numerator / this.denominator).toString();
         }
         if(sign()==-1){//if neg and does not derive
             return "-" + this.numerator + "/" + this.denominator;

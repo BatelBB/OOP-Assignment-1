@@ -63,17 +63,17 @@ public class Monomial {
     public String toString(){
         if (exponent == 0)
             return this.coefficient.toString();
-        if(this.coefficient.toString().equals("0"))
+        if(this.coefficient.toString().equals(""))
             return "";
         if(this.coefficient.toString().equals("1") && this.exponent == 1)
             return "x";
-        if (this.coefficient.toString().equals("1")){
-            if(this.coefficient.sign() == -1)
-                return "-x^" + this.exponent;
-            return "x^" + this.exponent;
-        }
-        else if(this.coefficient.sign() == -1)
-            return this.coefficient.neg().toString() + "x^" + this.exponent;
+//        if (this.coefficient.toString().equals("1")){
+//            if(this.coefficient.sign() == -1)
+//                return "-x^" + this.exponent;
+//            return "x^" + this.exponent;
+//        }
+//        else if(this.coefficient.sign() == -1)
+//            return this.coefficient.neg().toString() + "x^" + this.exponent;
         return this.coefficient.toString() + "x^" + this.exponent;
     }
 }
