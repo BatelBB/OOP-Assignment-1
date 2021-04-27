@@ -12,32 +12,34 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
-        //check if the scalar is an Integer or a Rational
-        String sStringAdd = s.toString();
-        if(sStringAdd.contains("/")) {
-            String sArr[] = s.toString().split("/");
-            int numerS = java.lang.Integer.parseInt(sArr[0]);
-            int denomS = java.lang.Integer.parseInt(sArr[1]);
-            return addRational(new Rational(numerS, denomS));
-        }else {
-            int integerS = java.lang.Integer.parseInt(sStringAdd);
-            return addInteger(new Integer(integerS));
-        }
+//        //check if the scalar is an Integer or a Rational
+//        String sStringAdd = s.toString();
+//        if(sStringAdd.contains("/")) {
+//            String sArr[] = s.toString().split("/");
+//            int numerS = java.lang.Integer.parseInt(sArr[0]);
+//            int denomS = java.lang.Integer.parseInt(sArr[1]);
+//            return addRational(new Rational(numerS, denomS));
+//        }else {
+//            int integerS = java.lang.Integer.parseInt(sStringAdd);
+//            return addInteger(new Integer(integerS));
+//        }
+        return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
-        //check if the scalar is an Integer or a Rational
-        String sStringMul = s.toString();
-        if(sStringMul.contains("/")) {
-            String sArr[] = s.toString().split("/");
-            int numerS = java.lang.Integer.parseInt(sArr[0]);
-            int denomS = java.lang.Integer.parseInt(sArr[1]);
-            return mulRational(new Rational(numerS, denomS));
-        }else {
-            int integerS = java.lang.Integer.parseInt(sStringMul);
-            return mulInteger(new Integer(integerS));
-        }
+//        //check if the scalar is an Integer or a Rational
+//        String sStringMul = s.toString();
+//        if(sStringMul.contains("/")) {
+//            String sArr[] = s.toString().split("/");
+//            int numerS = java.lang.Integer.parseInt(sArr[0]);
+//            int denomS = java.lang.Integer.parseInt(sArr[1]);
+//            return mulRational(new Rational(numerS, denomS));
+//        }else {
+//            int integerS = java.lang.Integer.parseInt(sStringMul);
+//            return mulInteger(new Integer(integerS));
+//        }
+        return s.mulRational(this);
     }
 
     @Override
