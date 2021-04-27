@@ -9,36 +9,19 @@ public class Rational implements Scalar {
         this.numerator = numerator;
         this.denominator = denominator;
     }
-
+    public int getNumerator(){
+        return numerator;
+    }
+    public int getDenominator(){
+        return denominator;
+    }
     @Override
     public Scalar add(Scalar s) {
-//        //check if the scalar is an Integer or a Rational
-//        String sStringAdd = s.toString();
-//        if(sStringAdd.contains("/")) {
-//            String sArr[] = s.toString().split("/");
-//            int numerS = java.lang.Integer.parseInt(sArr[0]);
-//            int denomS = java.lang.Integer.parseInt(sArr[1]);
-//            return addRational(new Rational(numerS, denomS));
-//        }else {
-//            int integerS = java.lang.Integer.parseInt(sStringAdd);
-//            return addInteger(new Integer(integerS));
-//        }
-        return s.addRational(this);
+       return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
-//        //check if the scalar is an Integer or a Rational
-//        String sStringMul = s.toString();
-//        if(sStringMul.contains("/")) {
-//            String sArr[] = s.toString().split("/");
-//            int numerS = java.lang.Integer.parseInt(sArr[0]);
-//            int denomS = java.lang.Integer.parseInt(sArr[1]);
-//            return mulRational(new Rational(numerS, denomS));
-//        }else {
-//            int integerS = java.lang.Integer.parseInt(sStringMul);
-//            return mulInteger(new Integer(integerS));
-//        }
         return s.mulRational(this);
     }
 
@@ -62,9 +45,8 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar addInteger(Integer s) {
-        //int numS = s.mulInteger(this.denominator);
-
-        return null;
+        int numS = (s.getNumber()*this.denominator)+this.numerator;
+        return new Rational(numS, this.denominator);
     }
 
     @Override
@@ -74,8 +56,7 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar mulInteger(Integer s) {
-        //return new Rational(s.mul(this.numerator), this.denominator);
-        return null;
+        return new Rational(s.getNumber()*this.numerator, this.denominator);
     }
 
     @Override
