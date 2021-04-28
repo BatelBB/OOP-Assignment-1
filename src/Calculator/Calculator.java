@@ -29,22 +29,25 @@ public class Calculator {
 
     public static void main(String[] args) throws Exception {
 
-        Polynomial p1 = Polynomial.build("1/2 1");
-        Polynomial p2 = Polynomial.build("1 0 -1 0 1/4");
+        Polynomial p1 = Polynomial.build("1 1");
+        //Polynomial p1 = Polynomial.build("1/2 1");
+        /*Polynomial p2 = Polynomial.build("1 0 -1 0 1/4");
         Polynomial p3 = Polynomial.build("5 0 -2");
         Polynomial p4 = Polynomial.build("5");
         Polynomial p5 = Polynomial.build("2/-1");
         Polynomial p6 = Polynomial.build("1/2 1 0 8");
         Polynomial p7 = Polynomial.build("0 0 100");
         Polynomial p8 = Polynomial.build("0 -1");
-        Polynomial p9 = Polynomial.build("0 -1/-2");
+        Polynomial p9 = Polynomial.build("0 -1/-2");*/
+
+
 
 
         //Add Tests
-        printTitle("Testing Add");
+        /*printTitle("Testing Add");
         Polynomial p = p1.add(p1);
         printAdd(p1, p1, p1.add(p1));
-        printAdd(p1, p2, p1.add(p2));
+        /*printAdd(p1, p2, p1.add(p2));
         printAdd(p2, p3, p2.add(p3));
         printAdd(p3, p1, p3.add(p1));
         printAdd(p4, p4, p4.add(p4));
@@ -110,6 +113,6 @@ try {
     printDerivate(p9, p9.derivative());
 }catch (Exception e){
 
-}
+}*/
     }
 }

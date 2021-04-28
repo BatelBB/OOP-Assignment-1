@@ -59,21 +59,35 @@ public class Monomial {
             return 1;
         return -1;
     }
+
+
     @Override
     public String toString(){
-        if (exponent == 0)
-            return this.coefficient.toString();
-        if(this.coefficient.toString().equals(""))
+
+        String coef = coefficient.toString();
+
+        if(coef.equals("0"))
             return "";
-        if(this.exponent == 1)
-            return this.coefficient.toString()+"x";
-//        if (this.coefficient.toString().equals("1")){
-//            if(this.coefficient.sign() == -1)
-//                return "-x^" + this.exponent;
-//            return "x^" + this.exponent;
-//        }
-//        else if(this.coefficient.sign() == -1)
-//            return this.coefficient.neg().toString() + "x^" + this.exponent;
-        return this.coefficient.toString() + "x^" + this.exponent;
+        if(exponent == 0){
+            return coef;
+        }
+        else if(exponent == 1){
+            if(isOne(coef))
+                return coef.substring(0,1) + "x";
+            else
+                return coef + "x";
+        }
+
+        if(isOne(coef))
+            return coef.substring(0,1) + "x^" + exponent;
+
+        return coef + "x^" + exponent;
+
     }
+
+    private boolean isOne(String s){
+        return s.equals("+1") || s.equals("-1");
+
+    }
+
 }

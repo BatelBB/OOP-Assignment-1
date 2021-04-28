@@ -12,6 +12,8 @@ public class Polynomial {
         this.polinom = polinom;
     }
 
+    public Polynomial(){  }
+
 
     public static Polynomial build(String s) {
         LinkedList<Monomial> newPol = new LinkedList<>();
@@ -88,7 +90,15 @@ public class Polynomial {
         Iterator<Monomial> iter2 = p5.polinom.iterator();
 
         Monomial m1 = next(iter1);
-        Monomial m2 = next(iter2);*/
+        Monomial m2 = next(iter2);
+
+        while (m2 != null)
+
+
+    */
+
+
+
         return null;
 
 
@@ -109,8 +119,11 @@ public class Polynomial {
 
     public String toString(){
         String s = "";
-        for(Monomial mon: polinom)
-            s += mon.toString() + " ";
+        for(Monomial mon: polinom) {
+            s += mon.toString();
+            if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-')
+                s += '1';
+        }
 
 
         if(s.charAt(0) == '+')

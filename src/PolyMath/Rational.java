@@ -2,19 +2,35 @@ package PolyMath;
 
 public class Rational implements Scalar {
 
-    private final int numerator; //Mone
-    private final int denominator; //Mechane
+    private int numerator; //Mone
+    private int denominator; //Mechane
 
     public Rational(int numerator, int denominator) {
-        this.numerator = numerator;
-        this.denominator = denominator;
+        if(denominator == 0)
+            throw new IllegalArgumentException("denominator cant be 0");
+
+        if(numerator < 0 && denominator < 0){
+            this.numerator = -numerator;
+            this.denominator = -denominator;
+        }
+        else if(numerator < 0 || denominator < 0) {
+            this.numerator = -1 * Math.abs(numerator);
+            this.denominator = Math.abs(denominator);
+        }
+        else {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
+
     }
+
     public int getNumerator(){
         return numerator;
     }
     public int getDenominator(){
         return denominator;
     }
+
     @Override
     public Scalar add(Scalar s) throws Exception {
        return s.addRational(this);
@@ -27,47 +43,41 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar addRational(Rational s) {
-        if (s.denominator == this.denominator) {
-            if(s.numerator+this.numerator==s.denominator)// 9/9 = 1
-                return new Integer(1);
-            else if(s.numerator+this.numerator%s.denominator==0) // 18/9 = 2
-                return new Integer((s.numerator+this.numerator)/s.denominator);
-            return new Rational(s.numerator + this.numerator, s.denominator); // 17/9
-        }
-        //the two denominators are different so we need to find the shared denominator
-        int numS = s.numerator * this.denominator;
-        int numThis = this.numerator * s.denominator;
-        int denS = s.denominator * this.denominator;
-        int denThis = this.denominator * s.numerator;
-
-        return new Rational(numS + numThis, denS + denThis);
+        return new Rational(this.numerator * s.denominator + this.denominator * s.numerator, this.denominator * s.denominator).reduce();
     }
+
 
     @Override
     public Scalar addInteger(Integer s) {
         int numS = (s.getNumber()*this.denominator)+this.numerator;
-        return new Rational(numS, this.denominator);
+        return new Rational(numS, this.denominator).reduce();
     }
 
     @Override
     public Scalar mulRational(Rational s) {
-        return new Rational(s.numerator * this.numerator, s.denominator * this.denominator);
+        return new Rational(s.numerator * this.numerator, s.denominator * this.denominator).reduce();
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
-        return new Rational(s.getNumber()*this.numerator, this.denominator);
+        return new Rational(s.getNumber()*this.numerator, this.denominator).reduce();
     }
 
     @Override
     public Scalar power(int exponent) {
-        int numeExp = this.numerator;
-        int denoExp = this.denominator;
-        for (int i = 0; i < exponent; i++) {
-            numeExp *= this.numerator;
-            denoExp *= this.denominator;
+        if(numerator == 0)
+            return this;
+
+        Rational r;
+
+        if(exponent < 0) {
+            r = new Rational(this.denominator, this.numerator).reduce();
+            exponent *= -1;
         }
-        return new Rational(numeExp, denoExp);
+        else
+            r = this.reduce();
+
+        return new Rational((int)Math.pow(r.numerator, exponent), (int)Math.pow(r.denominator, exponent)).reduce();
     }
 
     @Override
@@ -90,43 +100,42 @@ public class Rational implements Scalar {
     }
 
     //returns a new Rational which is the rational in its lowest form
-    public Rational reduce() throws Exception {
-        if(this.denominator == 0)
-            throw new Exception("Cannot / by zero!");
-        if(this.numerator%this.denominator==0) {
-            if (isPrime(this.denominator))
-                return new Rational(this.numerator / this.denominator, this.denominator);
-            return new Rational(this.numerator / this.denominator, this.denominator / this.numerator);
-        }
-
-        //if (isPrime(this.denominator))
+    public Rational reduce() {
+        if(numerator == 0)
             return this;
-        //return new Rational(this.numerator,this.denominator/)
+
+        int gcd = findGCD(numerator, denominator);
+        return new Rational(numerator/gcd, denominator/gcd);
     }
+
 
     @Override
     public String toString() {
-        if(this.numerator == 0)
-            return new Integer(0).toString();
-        if(this.numerator%this.denominator==0){
-            return new Integer(this.numerator / this.denominator).toString();
+        Rational r = this.reduce();
+
+        if(r.numerator == 0)
+            return "0";
+        if(r.denominator==1){
+            return new Integer(r.numerator).toString();
         }
-        if(sign()==-1){//if neg and does not derive
-            return "-" + this.numerator + "/" + this.denominator;
+        if(r.sign()==-1){//if neg and does not derive
+            return "-" + (-1)*r.numerator + "/" + r.denominator;
         }
-        return this.numerator + "/" + this.denominator;
+        return "+" + r.numerator + "/" + r.denominator;
     }
 
-    private boolean isPrime(int n){
-        // Corner case
-        if (n <= 1)
-            return false;
-
-        // Check from 2 to n-1
-        for (int i = 2; i < n; i++)
-            if (n % i == 0)
-                return false;
-
-        return true;
+    private static int findGCD(int x, int y)
+    {
+        int r=0, a, b;
+        a = Math.max(x, y); // a is greater number
+        b = Math.min(x, y); // b is smaller number
+        r = b;
+        while(a % b != 0)
+        {
+            r = a % b;
+            a = b;
+            b = r;
+        }
+        return r;
     }
 }
