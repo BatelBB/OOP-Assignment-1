@@ -68,9 +68,7 @@ public class Integer implements Scalar {
 
         if(sign() == 0)
             return "0";
-        else if(sign() == 1)
-            s += "+";
-        else
+        else if(sign() == -1)
             s += "-";
 
         if(sign() == 1)

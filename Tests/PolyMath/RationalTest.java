@@ -29,13 +29,13 @@ class RationalTest {
     void add() {
         try{
             Scalar r = r1.add(r2);
-            assertEquals("+1/2", r.toString());
+            assertEquals("1/2", r.toString());
         }catch (Exception e){
             System.out.println("not good add 1: " + e.getMessage());
         }
 
         try{
-            assertEquals("+1", r1.add(r3).toString());
+            assertEquals("1", r1.add(r3).toString());
         }catch (Exception e){
             System.out.println("not good add 2: " + e.getMessage());
         }
@@ -47,7 +47,7 @@ class RationalTest {
         }
 
         try{
-            assertEquals("+2", r1.add(r1).toString());
+            assertEquals("2", r1.add(r1).toString());
         }catch (Exception e){
             System.out.println("not good add 4: " + e.getMessage());
         }
@@ -75,12 +75,12 @@ class RationalTest {
         }
 
         try{
-            assertEquals("+1", r1.mul(r1).toString());
+            assertEquals("1", r1.mul(r1).toString());
         }catch (Exception e){
             System.out.println("not good mul 4: " + e.getMessage());
         }
         try{
-            assertEquals("+1/4", r2.mul(r2.neg()).toString());
+            assertEquals("1/4", r2.mul(r2.neg()).toString());
         }catch (Exception e){
             System.out.println("not good mul 5: " + e.getMessage());
         }
@@ -90,25 +90,25 @@ class RationalTest {
     @Test
     void power() {
         try{
-            assertEquals("+1", r1.power(13).toString());
+            assertEquals("1", r1.power(13).toString());
         }catch (Exception e){
             System.out.println("not good power 1: " + e.getMessage());
         }
 
         try{
-            assertEquals("+1", r1.power(0).toString());
+            assertEquals("1", r1.power(0).toString());
         }catch (Exception e){
             System.out.println("not good power 2: " + e.getMessage());
         }
 
         try{
-            assertEquals("+1", r1.power(-2).toString());
+            assertEquals("1", r1.power(-2).toString());
         }catch (Exception e){
             System.out.println("not good power 3: " + e.getMessage());
         }
 
         try{
-            assertEquals("+1/4", r2.power(2).toString());
+            assertEquals("1/4", r2.power(2).toString());
         }catch (Exception e){
             System.out.println("not good power 4: " + e.getMessage());
         }
@@ -137,7 +137,7 @@ class RationalTest {
 
     @Test
     void testToString() {
-        assertEquals("+1", r1.toString());
+        assertEquals("1", r1.toString());
         assertEquals("-1/2", r2.toString());
         assertEquals("0", r3.toString());
     }

@@ -121,7 +121,7 @@ public class Rational implements Scalar {
         if(r.sign()==-1){//if neg and does not derive
             return "-" + (-1)*r.numerator + "/" + r.denominator;
         }
-        return "+" + r.numerator + "/" + r.denominator;
+        return r.numerator + "/" + r.denominator;
     }
 
     private static int findGCD(int x, int y)

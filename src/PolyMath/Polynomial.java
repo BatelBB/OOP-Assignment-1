@@ -119,16 +119,17 @@ public class Polynomial {
 
     public String toString(){
         String s = "";
-        for(Monomial mon: polinom) {
-            s += mon.toString();
-            if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-')
-                s += '1';
+
+        for(Monomial m: polinom){
+            s += m.toString();
         }
 
+        if (s.equals(""))
+            s = "0";
+        else if(s.charAt(0) == '+')
+            s = s.substring(1, s.length());
 
-        if(s.charAt(0) == '+')
-            return s.substring(2, s.length()-1);
-        return s.substring(0, s.length()-1);
+        return s;
     }
 
 }
