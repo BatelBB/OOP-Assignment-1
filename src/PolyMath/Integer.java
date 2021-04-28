@@ -80,8 +80,4 @@ public class Integer implements Scalar {
 
     }
 
-    public boolean equals(Scalar s){
-        return this.toString().equals(s.toString());
-    }
-
 }

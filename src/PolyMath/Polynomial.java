@@ -75,6 +75,11 @@ public class Polynomial {
         return new Polynomial(newPol);
     }
 
+    /**
+     * An iterator
+     * @param iter the iterator
+     * @return a Monomial that is next in the Iterator
+     */
     private static Monomial next(Iterator<Monomial> iter){
         if(iter.hasNext())
             return iter.next();

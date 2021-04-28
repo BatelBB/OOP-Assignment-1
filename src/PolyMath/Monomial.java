@@ -87,6 +87,11 @@ public class Monomial {
 
     }
 
+    /**
+     * Checks if the string is + or minus 1
+     * @param s the string to checks
+     * @return returns true if it's equal to +1 or -1
+     */
     private boolean isOne(String s){
         return s.equals("+1") || s.equals("-1");
 

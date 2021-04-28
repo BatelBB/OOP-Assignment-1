@@ -124,6 +124,12 @@ public class Rational implements Scalar {
         return r.numerator + "/" + r.denominator;
     }
 
+    /**
+     * Calculates the biggest divider
+     * @param x numerator
+     * @param y denominator
+     * @return the biggest divider
+     */
     private static int findGCD(int x, int y)
     {
         int r=0, a, b;
