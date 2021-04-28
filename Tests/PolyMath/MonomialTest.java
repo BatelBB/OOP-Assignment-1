@@ -29,13 +29,19 @@ class MonomialTest {
         assertNull(m4.add(m3)); // (3/6)^2 + (4/(-6))^1 ==> null - different exponent
         assertNull(m5.add(m4)); // 3^3 + (3/6)^2 ==> null - different exponent
         assertEquals("13/4x^3", m6.add(m5).toString()); // (2/8)x^3 + 3x^3 = 13/4x
-
     }
 
     @Test
     void mult() {
-        assertNull(m0.mult(m1)); // 0^0 * (0/6)^0 ==> null - different coefficient
-        assertEquals("1/16x^5", m7.mult(m6).toString()); // (1/4)^2 * (2/8)^3
+        try {
+            assertEquals("0", m0.mult(m1).toString()); // 0^0 * (0/6)^0 ==> denominator cannot be 0
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        assertEquals("1/16x^5", m7.mult(m6).toString()); // (1/4)^2 * (2/8)^3 = 1/16x^5
+        assertEquals("4/3x^2", m2.mult(m3).toString());// -2x^1 * (4/-6)x^1 = 4/3x^2
+        assertEquals("3/2x^5", m4.mult(m5).toString()); // (3/6)x^2 * 3x^3 = 3/2x^5
+
     }
 
     @Test
@@ -52,11 +58,11 @@ class MonomialTest {
 
     @Test
     void testToString() {
-        assertEquals("", m0.toString());
-        assertEquals("", m1.toString());
+        assertEquals("0", m0.toString());
+        assertEquals("0", m1.toString());
         assertEquals("-2x", m2.toString());
         assertEquals("-2/3x", m3.toString());
-        assertEquals("+1/2x^2", m4.toString());
+        assertEquals("1/2x^2", m4.toString());
 
     }
 }
