@@ -32,12 +32,12 @@ public class Rational implements Scalar {
     }
 
     @Override
-    public Scalar add(Scalar s) throws Exception {
+    public Scalar add(Scalar s)  {
        return s.addRational(this);
     }
 
     @Override
-    public Scalar mul(Scalar s) throws Exception {
+    public Scalar mul(Scalar s)  {
         return s.mulRational(this);
     }
 

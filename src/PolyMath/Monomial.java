@@ -18,7 +18,7 @@ public class Monomial {
      * Monomial to the argument m. The Monomials must have the same
      * exponent, otherwise the method should return Null.
      */
-    public Monomial add(Monomial m) throws Exception {
+    public Monomial add(Monomial m)  {
         if(m.exponent != this.exponent)
             return null;
         return new Monomial(m.exponent, this.coefficient.add(m.coefficient));
@@ -40,14 +40,14 @@ public class Monomial {
      * the current Monomial using s. For example, evaluating 2x^2 on the
      * scalar 2/3 yields 2 * (2/3)^2 = 8/9.
      */
-    public Scalar evaluate(Scalar s) throws Exception {
+    public Scalar evaluate(Scalar s)  {
         return this.coefficient.mul(s.power(exponent));
     }
 
     /**
      * returns a new Monomial which is the derivaive of the current monomial
      */
-    public Monomial derivative() throws Exception {
+    public Monomial derivative()  {
         if(this.exponent == 0)
             return new Monomial(exponent, new Integer(exponent));
         return new Monomial(exponent-1,this.coefficient.mul(new Integer(exponent)));
