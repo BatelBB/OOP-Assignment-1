@@ -120,7 +120,13 @@ public class Polynomial {
     }
 
     public Polynomial derivative() {
-        return null;
+        LinkedList<Monomial> p = new LinkedList<>();
+
+        for(Monomial m : polinom){
+            p.add(m.derivative());
+        }
+
+        return new Polynomial(p);
     }
 
     public String toString(){
