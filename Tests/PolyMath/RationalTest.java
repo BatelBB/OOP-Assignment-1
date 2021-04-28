@@ -21,7 +21,7 @@ class RationalTest {
         try{
             r4 = new Rational(12, 0);
         }catch (Exception e){
-            System.out.println("good r4");
+            System.out.println("Success " + e.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ class RationalTest {
             Scalar r = r1.add(r2);
             assertEquals("1/2", r.toString());
         }catch (Exception e){
-            System.out.println("not good add 1: " + e.getMessage());
+            System.out.println("Not good add 1: " + e.getMessage());
         }
 
         try{

@@ -22,7 +22,7 @@ public class Monomial {
      */
     public Monomial add(Monomial m)  {
         if(m == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Monomial can't be null");
 
         if(m.exponent == 0 )
             m.exponent =+ this.exponent;
@@ -40,7 +40,7 @@ public class Monomial {
      */
     public Monomial mult(Monomial m){
         if(m == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Monomial can't be null");
         return new Monomial(this.exponent+m.exponent, m.coefficient.mul(this.coefficient));
     }
 
@@ -51,7 +51,7 @@ public class Monomial {
      */
     public Scalar evaluate(Scalar s)  {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Scalar can't be null");
         return this.coefficient.mul(s.power(exponent));
     }
 

@@ -7,7 +7,7 @@ public class Rational implements Scalar {
 
     public Rational(int numerator, int denominator) {
         if(denominator == 0)
-            throw new IllegalArgumentException("denominator cant be 0");
+            throw new IllegalArgumentException("Denominator can't be 0");
 
         if(numerator < 0 && denominator < 0){
             this.numerator = -numerator;
@@ -34,21 +34,21 @@ public class Rational implements Scalar {
     @Override
     public Scalar add(Scalar s)  {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Scalar can't be null");
        return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s)  {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Scalar can't be null");
         return s.mulRational(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Rational can't be null");
         return new Rational(this.numerator * s.denominator + this.denominator * s.numerator, this.denominator * s.denominator).reduce();
     }
 
@@ -56,7 +56,7 @@ public class Rational implements Scalar {
     @Override
     public Scalar addInteger(Integer s) {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Integer can't be null");
         int numS = (s.getNumber()*this.denominator)+this.numerator;
         return new Rational(numS, this.denominator).reduce();
     }
@@ -64,14 +64,14 @@ public class Rational implements Scalar {
     @Override
     public Scalar mulRational(Rational s) {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Rational can't be null");
         return new Rational(s.numerator * this.numerator, s.denominator * this.denominator).reduce();
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("Integer can't be null");
         return new Rational(s.getNumber()*this.numerator, this.denominator).reduce();
     }
 

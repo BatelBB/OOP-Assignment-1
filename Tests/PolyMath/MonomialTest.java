@@ -40,7 +40,7 @@ class MonomialTest {
             m1.add(null);
         }
         catch (Exception e){
-            System.out.println("good");
+            System.out.println("Success "+e.getMessage());
         }
     }
 
@@ -62,7 +62,7 @@ class MonomialTest {
             m1.mult(null);
         }
         catch (Exception e){
-            System.out.println("good");
+            System.out.println("Success "+e.getMessage());
         }
     }
 

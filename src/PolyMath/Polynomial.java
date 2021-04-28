@@ -14,7 +14,7 @@ public class Polynomial {
 
     public static Polynomial build(String s) {
         if(s == null)
-            throw new IllegalArgumentException("cant be null");
+            throw new IllegalArgumentException("String can't be null");
 
         LinkedList<Monomial> newPol = new LinkedList<>();
 
