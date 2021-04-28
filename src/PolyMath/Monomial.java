@@ -30,9 +30,7 @@ public class Monomial {
      * Monomial with the argument m.
      */
     public Monomial mult(Monomial m){
-        if(m.coefficient != this.coefficient)
-            return null;
-        return new Monomial(this.exponent+m.exponent, m.coefficient);
+        return new Monomial(this.exponent+m.exponent, m.coefficient.mul(this.coefficient));
     }
 
     /**
