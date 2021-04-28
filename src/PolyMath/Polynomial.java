@@ -121,7 +121,8 @@ public class Polynomial {
         String s = "";
 
         for(Monomial m: polinom){
-            s += m.toString();
+            if(!m.toString().equals("0"))
+                s += m.toString();
         }
 
         if (s.equals(""))

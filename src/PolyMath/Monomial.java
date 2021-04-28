@@ -67,7 +67,7 @@ public class Monomial {
         String coef = coefficient.toString();
 
         if(coef.equals("0"))
-            return "";
+            return "0";
         if(exponent == 0){
             return coef;
         }
