@@ -59,9 +59,7 @@ public class Monomial {
 
     //returns 1 for a positive coefficient and -1 otherwise
     public int sign(){
-        if(this.coefficient.sign()>0)
-            return 1;
-        return -1;
+        return this.coefficient.sign();
     }
 
 

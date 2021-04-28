@@ -64,6 +64,11 @@ class MonomialTest {
 
     @Test
     void sign() {
+        assertEquals(0, m0.sign());
+        assertEquals(-1, m2.sign());
+        assertEquals(-1, m3.sign());
+        assertEquals(1, m4.sign());
+
     }
 
     @Test
