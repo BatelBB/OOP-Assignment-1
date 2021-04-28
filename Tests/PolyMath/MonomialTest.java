@@ -56,6 +56,16 @@ class MonomialTest {
 
     @Test
     void evaluate() {
+        assertEquals("24",m5.evaluate(new Integer(2)).toString()); //3*2^3 = 24
+        assertEquals("0", m0.evaluate(new Integer(2)).toString()); //0*2^0 = 0
+        assertEquals("0",m1.evaluate(new Integer(9)).toString()); //0/-6*9^0 = 0
+        assertEquals("0",m11.evaluate(new Integer(0)).toString()); //0 * 0^3 = 0
+        assertEquals("5",m10.evaluate(new Integer(0)).toString()); //5 * 0^0 = 5
+        assertEquals("-4",m2.evaluate(new Integer(2)).toString()); //-2 * 2^1 = -4
+        assertEquals("9/4",m7.evaluate(new Integer(3)).toString());//1/4 * 3^2 = 9/4
+        assertEquals("128/27",m6.evaluate(new Rational(8,3)).toString()); //1/4 * 8/3^3 = 128/27
+        assertEquals("10/59049",m9.evaluate(new Rational(1,9)).toString());//10*1/9^5 = 10/59049
+        assertEquals("-2/21",m3.evaluate(new Rational(1,7)).toString()); //4/-6 * 1/7^1 =-2/21
     }
 
     @Test
