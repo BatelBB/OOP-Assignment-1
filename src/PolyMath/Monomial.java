@@ -21,6 +21,9 @@ public class Monomial {
      * exponent, otherwise the method should return Null.
      */
     public Monomial add(Monomial m)  {
+        if(m == null)
+            throw new IllegalArgumentException("cant be null");
+
         if(m.exponent == 0 )
             m.exponent =+ this.exponent;
         if(this.exponent == 0)
@@ -36,6 +39,8 @@ public class Monomial {
      * Monomial with the argument m.
      */
     public Monomial mult(Monomial m){
+        if(m == null)
+            throw new IllegalArgumentException("cant be null");
         return new Monomial(this.exponent+m.exponent, m.coefficient.mul(this.coefficient));
     }
 
@@ -45,6 +50,8 @@ public class Monomial {
      * scalar 2/3 yields 2 * (2/3)^2 = 8/9.
      */
     public Scalar evaluate(Scalar s)  {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return this.coefficient.mul(s.power(exponent));
     }
 

@@ -13,6 +13,9 @@ public class Polynomial {
 
 
     public static Polynomial build(String s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
+
         LinkedList<Monomial> newPol = new LinkedList<>();
 
         String[] pol = s.split(" ", -1);

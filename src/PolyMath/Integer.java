@@ -14,31 +14,44 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar add(Scalar s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
+
         return s.addInteger(this);
     }
 
     @Override
     public Scalar mul(Scalar s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return s.mulInteger(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Rational(s.getNumerator() + this.number * s.getDenominator(), s.getDenominator()).reduce();
     }
 
     @Override
     public Scalar addInteger(Integer s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Integer(number + s.number);
     }
 
     @Override
     public Scalar mulRational(Rational s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Rational(s.getNumerator() * this.number, s.getDenominator()).reduce();
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Integer(number * s.number);
     }
 

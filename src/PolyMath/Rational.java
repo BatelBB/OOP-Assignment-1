@@ -33,33 +33,45 @@ public class Rational implements Scalar {
 
     @Override
     public Scalar add(Scalar s)  {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
        return s.addRational(this);
     }
 
     @Override
     public Scalar mul(Scalar s)  {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return s.mulRational(this);
     }
 
     @Override
     public Scalar addRational(Rational s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Rational(this.numerator * s.denominator + this.denominator * s.numerator, this.denominator * s.denominator).reduce();
     }
 
 
     @Override
     public Scalar addInteger(Integer s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         int numS = (s.getNumber()*this.denominator)+this.numerator;
         return new Rational(numS, this.denominator).reduce();
     }
 
     @Override
     public Scalar mulRational(Rational s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Rational(s.numerator * this.numerator, s.denominator * this.denominator).reduce();
     }
 
     @Override
     public Scalar mulInteger(Integer s) {
+        if(s == null)
+            throw new IllegalArgumentException("cant be null");
         return new Rational(s.getNumber()*this.numerator, this.denominator).reduce();
     }
 

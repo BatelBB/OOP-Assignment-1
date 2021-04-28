@@ -36,6 +36,12 @@ class MonomialTest {
         assertEquals("13/4x^3", m6.add(m5).toString()); // (2/8)x^3 + 3x^3 = 13/4x
         assertEquals("10x^5", m1.add(m9).toString()); //0x^0 + 10x^5 = 10x^5
         assertEquals("1/4x^3",m11.add(m6).toString()); // 0x^3 + 2/8x^3 = 1/4x^3
+        try{
+            m1.add(null);
+        }
+        catch (Exception e){
+            System.out.println("good");
+        }
     }
 
     @Test
@@ -52,6 +58,12 @@ class MonomialTest {
         assertEquals("-1/3x^3", m4.mult(m3).toString()); // (3/6)x^2 * (4/-6)x^1 = -1/3x^3
         assertEquals("50x^5",m10.mult(m9).toString()); // 5x^0 * 10x^5 = 50x^5
         assertEquals("90x^5",m8.mult(m9).toString()); //9x^(2/9) * 10x^5 = 90x^(47/9)
+        try{
+            m1.mult(null);
+        }
+        catch (Exception e){
+            System.out.println("good");
+        }
     }
 
     @Test
