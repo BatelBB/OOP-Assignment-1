@@ -35,6 +35,13 @@ class PolynomialTest {
 
     @Test
     void mul() {
+        assertEquals("0", p1.mul(p2).toString());
+        assertEquals("0", p1.mul(p3).toString());
+        assertEquals("1/2+4x+11x^2+10x^3", p2.mul(p3).toString());
+        assertEquals("-1/2x+x^2+4x^3", p2.mul(p4).toString());
+        assertEquals("-1/2x+x^2+4x^3", p4.mul(p2).toString());
+        assertEquals("-1/4x-1/2x^2+7/2x^3+10x^4", p3.mul(p4).toString());
+
     }
 
     @Test

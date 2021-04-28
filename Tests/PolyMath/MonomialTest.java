@@ -52,11 +52,11 @@ class MonomialTest {
 
     @Test
     void testToString() {
-        assertEquals("", m0.toString());
-        assertEquals("", m1.toString());
+        assertEquals("0", m0.toString());
+        assertEquals("0", m1.toString());
         assertEquals("-2x", m2.toString());
         assertEquals("-2/3x", m3.toString());
-        assertEquals("+1/2x^2", m4.toString());
+        assertEquals("1/2x^2", m4.toString());
 
     }
 }
