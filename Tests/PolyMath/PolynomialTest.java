@@ -11,9 +11,6 @@ class PolynomialTest {
     Polynomial p2;
     Polynomial p3;
     Polynomial p4;
-    Polynomial p5;
-
-
 
     @BeforeEach
     void setUp() {
@@ -46,15 +43,29 @@ class PolynomialTest {
 
     @Test
     void evaluate() {
+        assertEquals("0", p1.evaluate(new Integer(15)).toString());
+        assertEquals("31", p2.evaluate(new Integer(15)).toString());
+        assertEquals("-3", p2.evaluate(new Integer(-2)).toString());
+        assertEquals("2", p2.evaluate(new Rational(-2,-4)).toString());
+        assertEquals("-5", p2.evaluate(new Rational(3,-1)).toString());
+
+        assertEquals("2341/2", p3.evaluate(new Integer(15)).toString());
+        assertEquals("2161/2", p3.evaluate(new Integer(-15)).toString());
+        assertEquals("9", p4.evaluate(new Integer(-2)).toString());
+        assertEquals("1/4", p4.evaluate(new Rational(-2,-4)).toString());
     }
 
     @Test
     void derivative() {
+        assertEquals("0", p1.derivative().toString());
+        assertEquals("2", p2.derivative().toString());
+        assertEquals("3+10x", p3.derivative().toString());
+        assertEquals("-1/2+4x", p4.derivative().toString());
+
     }
 
     @Test
     void testToString() {
-
         assertEquals("0", p1.toString());
         assertEquals("1+2x", p2.toString());
         assertEquals("1/2+3x+5x^2", p3.toString());
