@@ -29,10 +29,21 @@ public class Polynomial {
         return new Polynomial(newPol);
     }
 
+    /**
+     * Converts a string to rational number
+     * @param s the string that needs to be converted to the number
+     * @return a scalar that is the new rational number
+     */
     private static Scalar convertToRational(String s){
         String[] nums = s.split("/");
         return new Rational(java.lang.Integer.valueOf(nums[0]), java.lang.Integer.valueOf(nums[1]));
     }
+
+    /**
+     * Converts a string to integer number
+     * @param s the string that needs to be converted to the number
+     * @return a scalar that is the new Integer number
+     */
     private static Scalar convertToInteger(String s){
         return new Integer(java.lang.Integer.valueOf(s));
     }
