@@ -70,6 +70,12 @@ class MonomialTest {
 
     @Test
     void derivative() {
+        assertEquals("0", m0.derivative().toString());
+        assertEquals("-2",m2.derivative().toString());
+        assertEquals("50x^4",m9.derivative().toString());
+        assertEquals("3/4x^2",m6.derivative().toString());
+        assertEquals("0",m10.derivative().toString());
+        assertEquals("0", m11.derivative().toString());
     }
 
     @Test
