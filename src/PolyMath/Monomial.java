@@ -81,7 +81,7 @@ public class Monomial {
         }
 
         if(isOne(coef))
-            return coef.substring(0,1) + "x^" + exponent;
+            return "x^" + exponent;
 
         return coef + "x^" + exponent;
 
@@ -93,7 +93,7 @@ public class Monomial {
      * @return returns true if it's equal to +1 or -1
      */
     private boolean isOne(String s){
-        return s.equals("+1") || s.equals("-1");
+        return s.equals("1") || s.equals("-1");
 
     }
 
