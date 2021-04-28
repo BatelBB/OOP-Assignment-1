@@ -3,7 +3,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Polynomial {
-    //**Added these classes just for the errors in Calculator, feel free to change anything**//
 
     private LinkedList<Monomial> polinom;
 
