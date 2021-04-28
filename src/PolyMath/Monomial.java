@@ -5,6 +5,8 @@ public class Monomial {
     private Scalar coefficient;
 
     public Monomial(int exponent, Scalar coefficient){
+        if(exponent < 0)
+            throw new IllegalArgumentException("Exponent cannot be negative");
         this.exponent = exponent;
         this.coefficient = coefficient;
     }
@@ -19,6 +21,10 @@ public class Monomial {
      * exponent, otherwise the method should return Null.
      */
     public Monomial add(Monomial m)  {
+        if(m.exponent == 0 )
+            m.exponent =+ this.exponent;
+        if(this.exponent == 0)
+            this.exponent =+ m.exponent;
         if(m.exponent != this.exponent)
             return null;
         return new Monomial(m.exponent, this.coefficient.add(m.coefficient));
