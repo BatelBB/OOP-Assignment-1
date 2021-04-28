@@ -34,7 +34,7 @@ public class Integer implements Scalar {
 
     @Override
     public Scalar mulRational(Rational s) {
-        return new Rational(s.getNumerator() * this.number, s.getNumerator()).reduce();
+        return new Rational(s.getNumerator() * this.number, s.getDenominator()).reduce();
     }
 
     @Override

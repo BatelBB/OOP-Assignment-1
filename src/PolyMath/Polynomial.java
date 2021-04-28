@@ -8,11 +8,9 @@ public class Polynomial {
     private LinkedList<Monomial> polinom;
 
     //constructor
-    public Polynomial(LinkedList<Monomial> polinom) {
+    private Polynomial(LinkedList<Monomial> polinom) {
         this.polinom = polinom;
     }
-
-    public Polynomial(){  }
 
 
     public static Polynomial build(String s) {
@@ -84,7 +82,8 @@ public class Polynomial {
     }
 
     public Polynomial mul(Polynomial p5) {
-        /*LinkedList<Monomial> newPol = new LinkedList<>();
+        Polynomial p = Polynomial.build("");
+        LinkedList<Monomial> list = new LinkedList<>();
 
         Iterator<Monomial> iter1 = polinom.iterator();
         Iterator<Monomial> iter2 = p5.polinom.iterator();
@@ -92,14 +91,21 @@ public class Polynomial {
         Monomial m1 = next(iter1);
         Monomial m2 = next(iter2);
 
-        while (m2 != null)
 
+        while (m1 != null) {
+            while (m2 != null) {
+                list.add(m1.mult(m2));
+                m2 = next(iter2);
+            }
 
-    */
+            p = p.add(new Polynomial(list));
+            list = new LinkedList<>();
+            iter2 = p5.polinom.iterator();
+            m1 = next(iter1);
+            m2 = next(iter2);
+        }
 
-
-
-        return null;
+        return p;
 
 
     }
@@ -121,8 +127,12 @@ public class Polynomial {
         String s = "";
 
         for(Monomial m: polinom){
-            if(!m.toString().equals("0"))
+            String curM = m.toString();
+            if(!curM.equals("0")) {
+                if (curM.charAt(0) != '-')
+                    s += "+";
                 s += m.toString();
+            }
         }
 
         if (s.equals(""))
